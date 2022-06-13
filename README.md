@@ -1,6 +1,6 @@
 # classification_algorithms
 
-1. Implementing a perceptron learning algorithm in Python
+1. Implementing a perceptron learning algorithm in Python 
   -> An object-oriented perceptron API
   -> Training a perceptron model on the Iris dataset
  2. Adaptive linear neurons and the convergence of learning
