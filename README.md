@@ -1,21 +1,10 @@
 # classification_algorithms
 
-1. Implementing a perceptron learning algorithm in Python 
-
-  -> An object-oriented perceptron API
-  
-  
-  -> Training a perceptron model on the Iris dataset
-  
-  
- 2. Adaptive linear neurons and the convergence of learning
-  -> Minimizing cost functions with gradient descent
-  
-  
-  -> Implementing an Adaptive Linear Neuron in Python
-  
-  
-  -> Improving gradient descent through feature scaling
-  
-  
+1. Implementing a perceptron learning algorithm in Python</br>
+  -> An object-oriented perceptron API </br>
+  -> Training a perceptron model on the Iris dataset</br>
+2. Adaptive linear neurons and the convergence of learning </br>
+  -> Minimizing cost functions with gradient descent</br>
+  -> Implementing an Adaptive Linear Neuron in Python</br>
+  -> Improving gradient descent through feature scaling</br>
   -> Large scale machine learning and stochastic gradient descent
