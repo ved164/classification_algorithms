@@ -1,4 +1,4 @@
-# classification_algorithms
+## Classification Algorithms:
 
 1. Implementing a perceptron learning algorithm in Python</br>
   -> An object-oriented perceptron API </br>
