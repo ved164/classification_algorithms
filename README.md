@@ -8,3 +8,8 @@
   -> Implementing an Adaptive Linear Neuron in Python</br>
   -> Improving gradient descent through feature scaling</br>
   -> Large scale machine learning and stochastic gradient descent
+
+
+![image](https://user-images.githubusercontent.com/64261977/180229781-58f198b7-1ab3-47ae-a4d2-d4b72e967c4a.png)
+
+**Plot of perceptron decision regions**
