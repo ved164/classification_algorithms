@@ -1,11 +1,10 @@
-from cProfile import label
-import enum
 import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from torch import classes
 from perceptron import Perceptron, plot_decision_regions
+from adaline import AdalineGD
 
 
 """
@@ -50,57 +49,41 @@ plt.show()
     it misclassifies an example. 
 """
 
-ppn = Perceptron(eta=0.1, n_iter=10)
-ppn.fit(X,y)
+# ppn = Perceptron(eta=0.1, n_iter=10)
+# ppn.fit(X,y)
 
-plt.plot(range(1,len(ppn.errors_) + 1),
-ppn.errors_, marker = 'o')
+# plt.plot(range(1,len(ppn.errors_) + 1),
+# ppn.errors_, marker = 'o')
 
-plt.xlabel('Epochs')
-plt.ylabel('Number of updates')
-plt.show()
+# plt.xlabel('Epochs')
+# plt.ylabel('Number of updates')
+# plt.show()
 
-# ###Function for visualizing the decision boundary###
-
-# from matplotlib.colors import ListedColormap
-
-# def plot_decision_regulation(X,y, classifier, resolution = 0.2):
-#     #setup marker generator and colour map
-#     markers = ('o', 's', '^', '<')
-#     colors = ('red', 'blue', 'green', 'gray', 'cyan')
-#     cmap = ListedColormap(colors[:len(np.unique(y))])
-
-#     # plot the decision surface
-#     x1_min, x1_max = X[:,0].min() - 1, X[:,0].max() + 1
-#     x2_min, x2_max = X[:,1].min() - 1, X[:,1].max() + 1
-#     xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
-#                             np.arange(x2_min,x2_max, resolution))
-#     lab = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
-#     lab = lab.reshape(xx1.shape)
-#     plt.contour(xx1,xx2,lab,alpha=0.3, cmap = cmap)
-#     plt.xlim(xx1.min(), xx1.max())
-#     plt.xlim(xx2.min(), xx2.max())
-
-#     # plot class examples
-#     for idx, cl in enumerate(np.unique(y)):
-#         plt.scatter(x=X[y == cl, 0],
-#                     y=X[y == cl, 1],
-#                     alpha=0.8,
-#                     c = colors[idx],
-#                     marker=markers[idx],
-#                     label = f'Class {cl}',
-#                     edgecolors='black')
-
-
-# plot_decision_regulation(X,y, classifier=ppn)
-# plt.xlabel('Sepal Length in cm')
-# plt.ylabel('Peral Length in cm')
-# plt.legend(loc = 'upper left')
+# plot_decision_regions(X, y, classifier=ppn)
+# plt.xlabel('Sepal length [cm]')
+# plt.ylabel('Petal length [cm]')
+# plt.legend(loc='upper left')
 # plt.show()
 
 
-plot_decision_regions(X, y, classifier=ppn)
-plt.xlabel('Sepal length [cm]')
-plt.ylabel('Petal length [cm]')
-plt.legend(loc='upper left')
+
+
+
+# Plotting Adaline 
+
+fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 4))
+
+ada1 = AdalineGD(n_iter=15, eta=0.1).fit(X, y)
+ax[0].plot(range(1, len(ada1.losses_) + 1), np.log10(ada1.losses_), marker='o')
+ax[0].set_xlabel('Epochs')
+ax[0].set_ylabel('log(Mean squared error)')
+ax[0].set_title('Adaline - Learning rate 0.1')
+
+ada2 = AdalineGD(n_iter=15, eta=0.0001).fit(X, y)
+ax[1].plot(range(1, len(ada2.losses_) + 1), ada2.losses_, marker='o')
+ax[1].set_xlabel('Epochs')
+ax[1].set_ylabel('Mean squared error')
+ax[1].set_title('Adaline - Learning rate 0.0001')
+
+# plt.savefig('images/02_11.png', dpi=300)
 plt.show()
